@@ -2,14 +2,12 @@ import { Box, Button, Flex, Heading, Input, Link, Stack, Text, useToast } from '
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import useUserStore from '../stores/userdetails';
 
 export default function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const toast = useToast();
-  const setUserId = useUserStore((state) => state.setUserId);
 
   const handleLogin = async () => {
     try {

@@ -1,11 +1,10 @@
 import React from 'react';
-import { Calendar, BookOpen, Eye, User, Check, Trash2 } from 'lucide-react';
+import { Calendar, Check, Trash2 } from 'lucide-react';
 
 // Mock VisibilitySelector component
 const VisibilitySelector = ({
   visibility,
   isAnonymous,
-  visibilityOptions,
   onVisibilityChange,
   onIsAnonymousChange
 }) => {
