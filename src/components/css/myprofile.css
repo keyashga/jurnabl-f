@@ -1,0 +1,402 @@
+/* Profile.css - Diary Theme Profile Page */
+
+.profile-container-mp {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f1eb 0%, #f9f6f0 50%, #faf8f3 100%);
+    font-family: Georgia, "Times New Roman", serif;
+    padding: 3rem 2rem;
+}
+
+.profile-main-mp {
+    max-width: 80rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.stats-sidebar-mp {
+    position: sticky;
+    top: 2rem;
+}
+
+/* Diary Cards with Enhanced Design */
+.diary-card-mp {
+    background: linear-gradient(145deg, #fffef7 0%, #fefcf3 100%);
+    border-radius: 8px;
+    box-shadow: 
+        0 4px 6px rgba(0,0,0,0.1),
+        0 1px 3px rgba(0,0,0,0.08),
+        inset 0 0 0 1px rgba(139, 69, 19, 0.1),
+        0 0 30px rgba(139, 69, 19, 0.05);
+    border: 1px solid rgba(139, 69, 19, 0.15);
+    position: relative;
+    transition: all 0.3s ease;
+    transform: rotate(-0.5deg);
+    margin-bottom: 2rem;
+}
+
+.diary-card-mp:nth-child(even) {
+    transform: rotate(0.5deg);
+}
+
+.diary-card-mp:hover {
+    transform: rotate(0deg) translateY(-4px) scale(1.02);
+    box-shadow: 
+        0 8px 12px rgba(0,0,0,0.15),
+        0 2px 6px rgba(0,0,0,0.1),
+        inset 0 0 0 1px rgba(139, 69, 19, 0.15),
+        0 0 50px rgba(139, 69, 19, 0.08);
+}
+
+
+
+/* Red Margin Line */
+.margin-line-mp {
+    position: absolute;
+    left: 3.5rem;
+    top: 1rem;
+    bottom: 1rem;
+    width: 1px;
+    background: rgba(239, 68, 68, 0.3);
+}
+
+.card-content-mp {
+    padding: 2.5rem;
+    padding-left: 4rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* Enhanced Stats Styling */
+.stat-number-mp {
+    font-size: 2.75rem;
+    font-weight: 600;
+    color: #78350f;
+    margin: 0;
+    line-height: 1;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.stat-label-mp {
+    color: rgba(146, 64, 14, 0.8);
+    font-size: 1.125rem;
+    margin-top: 0.75rem;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+
+.stat-help-mp {
+    color: rgba(120, 53, 15, 0.7);
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    line-height: 1.4;
+}
+
+/* Enhanced Profile Card */
+.profile-card-mp {
+    background: linear-gradient(145deg, #fffef7 0%, #fefcf3 100%);
+    border-radius: 8px;
+    box-shadow: 
+        0 4px 6px rgba(0,0,0,0.1),
+        0 1px 3px rgba(0,0,0,0.08),
+        inset 0 0 0 1px rgba(139, 69, 19, 0.1),
+        0 0 30px rgba(139, 69, 19, 0.05);
+    border: 1px solid rgba(139, 69, 19, 0.15);
+    position: relative;
+    min-height: 650px;
+    transform: rotate(-0.3deg);
+    transition: all 0.3s ease;
+}
+
+.profile-card-mp:hover {
+    transform: rotate(0deg) scale(1.01);
+    box-shadow: 
+        0 8px 12px rgba(0,0,0,0.15),
+        0 2px 6px rgba(0,0,0,0.1),
+        inset 0 0 0 1px rgba(139, 69, 19, 0.15),
+        0 0 50px rgba(139, 69, 19, 0.08);
+}
+
+.profile-content-mp {
+    padding: 3rem;
+    padding-left: 4rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* Enhanced Avatar Styling */
+.profile-avatar-mp {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 4px solid rgba(245, 158, 11, 0.4);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.profile-avatar-mp:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced Typography */
+.profile-name-mp {
+    font-size: 2.25rem;
+    color: #78350f;
+    margin: 0 0 0.5rem 0;
+    font-weight: 500;
+    letter-spacing: 0.025em;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.profile-username-mp {
+    color: rgba(146, 64, 14, 0.8);
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+.profile-bio-mp {
+    color: rgba(120, 53, 15, 0.9);
+    line-height: 1.6;
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    text-indent: 1.5em;
+    font-style: italic;
+    padding: 1rem;
+    background: rgba(254, 243, 199, 0.3);
+    border-radius: 6px;
+    border-left: 3px solid rgba(245, 158, 11, 0.4);
+}
+
+/* Enhanced Meta Information */
+.profile-meta-mp {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: rgba(146, 64, 14, 0.8);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+    background: rgba(254, 243, 199, 0.2);
+    border-radius: 6px;
+    border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.profile-meta-mp i {
+    color: #92400e;
+    font-size: 1rem;
+}
+
+/* Enhanced Button Styling */
+.journal-button-mp {
+    background: linear-gradient(135deg, #fde68a, #f59e0b);
+    color: #78350f;
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-family: Georgia, "Times New Roman", serif;
+    margin-right: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-decoration: none;
+}
+
+.journal-button-mp:hover {
+    background: linear-gradient(135deg, #fcd34d, #d97706);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.journal-button-mp i {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.journal-button-mp:hover i {
+    transform: scale(1.1);
+}
+
+/* Additional Profile Actions */
+.profile-actions-mp {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid rgba(245, 158, 11, 0.2);
+}
+
+.action-button-mp {
+    background: rgba(254, 243, 199, 0.4);
+    color: #78350f;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-family: Georgia, "Times New Roman", serif;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+.action-button-mp:hover {
+    background: rgba(254, 243, 199, 0.6);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Status Indicators */
+.status-indicator-mp {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #fde68a, #f59e0b);
+    color: #78350f;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+}
+
+.status-dot-mp {
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(135deg, #10b981, #059669);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 1200px) {
+    .profile-main-mp {
+        grid-template-columns: 350px 1fr;
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .profile-main-mp {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .stats-sidebar-mp {
+        position: static;
+    }
+    
+    .diary-card-mp {
+        transform: rotate(-0.2deg);
+    }
+    
+    .diary-card-mp:nth-child(even) {
+        transform: rotate(0.2deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-container-mp {
+        padding: 2rem 1rem;
+    }
+    
+    .card-content-mp {
+        padding: 2rem;
+        padding-left: 3rem;
+    }
+    
+    .profile-content-mp {
+        padding: 2.5rem;
+        padding-left: 3rem;
+    }
+    
+    .profile-name-mp {
+        font-size: 2rem;
+    }
+    
+    .notebook-lines-mp {
+        margin-left: 2.5rem;
+    }
+    
+    .margin-line-mp {
+        left: 2.5rem;
+    }
+    
+    .stat-number-mp {
+        font-size: 2.25rem;
+    }
+    
+    .profile-avatar-mp {
+        width: 110px;
+        height: 110px;
+    }
+    
+    .profile-actions-mp {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-container-mp {
+        padding: 1rem 0.5rem;
+    }
+    
+    .diary-card-mp,
+    .profile-card-mp {
+        transform: none;
+        margin: 0.5rem 0;
+    }
+    
+    .diary-card-mp:hover,
+    .profile-card-mp:hover {
+        transform: translateY(-2px) scale(1.01);
+    }
+    
+    .notebook-lines-mp,
+    .margin-line-mp {
+        display: none;
+    }
+    
+    .card-content-mp,
+    .profile-content-mp {
+        padding: 1.5rem;
+    }
+    
+    .profile-name-mp {
+        font-size: 1.75rem;
+    }
+    
+    .stat-number-mp {
+        font-size: 2rem;
+    }
+    
+    .profile-bio-mp {
+        text-indent: 0;
+        padding: 0.75rem;
+    }
+}
