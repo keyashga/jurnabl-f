@@ -172,7 +172,7 @@
         if (response.status === 200) {
           setIsSaved(true);
           setIsEditing(false);
-          console.log('Journal updated:', response.data);
+          
           
           await fetchJournalForDate(selectedDate);
           clearForm();
@@ -232,7 +232,7 @@
 
         if (response.status === 201) {
           setIsSaved(true);
-          console.log('Journal created:', response.data);
+          
           
           await fetchJournalForDate(selectedDate);
           clearForm();
@@ -259,7 +259,6 @@
     };
 
     useEffect(() => {
-      console.log(`Selected date changed: ${selectedDate.toDateString()}`);
       fetchJournalForDate(selectedDate);
     }, [selectedDate]);
 
