@@ -245,7 +245,7 @@ const styles = {
   container: {
     minHeight: '100vh',
     background: '#f8f4f0',
-    fontFamily: '"Kalam", "Comic Sans MS", cursive',
+    fontFamily: '"Kalam", "Comic Sans MS", "Patrick Hand", "Segoe UI", sans-serif',
     padding: '0rem',
     display: 'flex',
     justifyContent: 'center',
@@ -262,13 +262,13 @@ const styles = {
     boxShadow: '0 4px 20px rgba(0,0,0,0.1), 0 0 0 1px #e5e5e5',
     position: 'relative',
     padding: '60px 40px 40px 80px',
-    marginLeft: '20px',
+    marginLeft: '1rem',
     overflow: 'hidden'
   },
 
   marginLine: {
     position: 'absolute',
-    left: '70px',
+    left: '2.5rem',
     top: '0',
     bottom: '0',
     width: '2px',
@@ -279,7 +279,7 @@ const styles = {
   paperLines: {
     position: 'absolute',
     top: '0',
-    left: '80px',
+    left: '2.5rem',
     right: '40px',
     height: '100%',
     pointerEvents: 'none',
