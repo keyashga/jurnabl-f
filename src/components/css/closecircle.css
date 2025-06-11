@@ -3,7 +3,7 @@
 .close-circle-container {
   min-height: 100vh;
   background: #f8f4f0;
-  font-family: "Kalam", "Comic Sans MS", cursive;
+  font-family: "Kalam", "Comic Sans MS", sans-serif;
   padding: 2rem;
 }
 

@@ -190,7 +190,7 @@ const styles = {
   container: {
     minHeight: '100vh',
     background: '#f8f4f0',
-    fontFamily: '"Kalam", "Comic Sans MS", "Patrick Hand", "Segoe UI", sans-serif',
+    fontFamily: '"Kalam", "Comic Sans MS", sans-serif',
     padding: '0rem',
     display: 'flex',
     justifyContent: 'center',
