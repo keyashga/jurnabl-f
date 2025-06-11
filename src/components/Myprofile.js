@@ -280,6 +280,37 @@ const UserProfile = () => {
               </div>
             </div> */}
           <Community />
+          {/* Feedback Link (minimal design) */}
+            <a
+              href="https://forms.gle/dmeBC6Gr8jdhjwP47"
+              target="_blank" // Opens the link in a new tab
+              rel="noopener noreferrer" // Recommended for security when using target="_blank"
+              style={{
+                display: 'block', // Makes it occupy its own line
+                marginTop: '16px', // Adds some space from the element above
+                padding: '8px 12px',
+                 // Very light blue background
+                color: '#1e40af', // Darker blue text color
+                border: '1px solid #bfdbfe', // Light blue border
+                borderRadius: '0.375rem', // Rounded corners
+                textAlign: 'center',
+                textDecoration: 'none', // Remove underline
+                fontSize: '0.875rem', // Smaller font size
+                fontWeight: '500',
+                cursor: 'pointer',
+                transition: 'background-color 0.2s ease-in-out, border-color 0.2s ease-in-out',
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.backgroundColor = '#dbeafe'; // Lighter blue on hover
+                e.currentTarget.style.borderColor = '#93c5fd';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.backgroundColor = '#eff6ff';
+                e.currentTarget.style.borderColor = '#bfdbfe';
+              }}
+            >
+              Give Feedback
+            </a>
       </div>
 
           {/* Right Side - User Profile */}
