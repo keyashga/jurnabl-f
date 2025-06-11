@@ -1,4 +1,4 @@
-/* Profile.css - Diary Theme Profile Page */
+/* Profile.css - Diary Theme Profile Page - Fully Responsive */
 
 .profile-container-mp {
     min-height: 100vh;
@@ -19,6 +19,23 @@
 .stats-sidebar-mp {
     position: sticky;
     top: 2rem;
+}
+
+/* Notebook Lines */
+.notebook-lines-mp {
+    position: absolute;
+    top: 1rem;
+    left: 4rem;
+    right: 1rem;
+    bottom: 1rem;
+    background-image: repeating-linear-gradient(
+        transparent,
+        transparent 1.5rem,
+        rgba(139, 69, 19, 0.15) 1.5rem,
+        rgba(139, 69, 19, 0.15) calc(1.5rem + 1px)
+    );
+    pointer-events: none;
+    opacity: 0.35;
 }
 
 /* Diary Cards with Enhanced Design */
@@ -49,8 +66,6 @@
         inset 0 0 0 1px rgba(139, 69, 19, 0.15),
         0 0 50px rgba(139, 69, 19, 0.08);
 }
-
-
 
 /* Red Margin Line */
 .margin-line-mp {
@@ -130,8 +145,8 @@
 
 /* Enhanced Avatar Styling */
 .profile-avatar-mp {
-    width: 130px;
-    height: 130px;
+    width: 130px !important;
+    height: 130px !important;
     border-radius: 50%;
     border: 4px solid rgba(245, 158, 11, 0.4);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
@@ -231,6 +246,18 @@
     transform: scale(1.1);
 }
 
+/* Logout Button Styling */
+.logout-button-mp {
+    background: linear-gradient(135deg, #fee2e2, #fca5a5);
+    color: #dc2626;
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    margin-right: 0;
+}
+
+.logout-button-mp:hover {
+    background: linear-gradient(135deg, #fecaca, #f87171);
+}
+
 /* Additional Profile Actions */
 .profile-actions-mp {
     display: flex;
@@ -293,36 +320,78 @@
     50% { opacity: 0.5; }
 }
 
-/* Enhanced Responsive Design */
-@media (max-width: 1200px) {
+/* Photo Input Styling */
+.photo-input-mp {
+    display: none;
+}
+
+/* RESPONSIVE BREAKPOINTS */
+
+/* Large Desktop (1200px+) */
+@media (min-width: 1200px) {
+    .profile-container-mp {
+        padding: 4rem 3rem;
+    }
+    
+    .profile-main-mp {
+        gap: 5rem;
+    }
+}
+
+/* Standard Desktop (992px - 1199px) */
+@media (max-width: 1199px) {
     .profile-main-mp {
         grid-template-columns: 350px 1fr;
         gap: 3rem;
     }
+    
+    .profile-container-mp {
+        padding: 3rem 1.5rem;
+    }
 }
 
-@media (max-width: 1024px) {
+/* Tablet Landscape (768px - 991px) */
+@media (max-width: 991px) {
     .profile-main-mp {
         grid-template-columns: 1fr;
         gap: 2rem;
+        max-width: 700px;
     }
     
     .stats-sidebar-mp {
         position: static;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
     }
     
     .diary-card-mp {
         transform: rotate(-0.2deg);
+        margin-bottom: 0;
     }
     
     .diary-card-mp:nth-child(even) {
         transform: rotate(0.2deg);
     }
+    
+    .profile-card-mp {
+        min-height: auto;
+    }
+    
+    .profile-container-mp {
+        padding: 2.5rem 1.5rem;
+    }
 }
 
-@media (max-width: 768px) {
+/* Tablet Portrait (576px - 767px) */
+@media (max-width: 767px) {
     .profile-container-mp {
         padding: 2rem 1rem;
+    }
+    
+    .stats-sidebar-mp {
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
     
     .card-content-mp {
@@ -337,10 +406,16 @@
     
     .profile-name-mp {
         font-size: 2rem;
+        text-align: center;
+    }
+    
+    .profile-username-mp {
+        text-align: center;
+        font-size: 1.1rem;
     }
     
     .notebook-lines-mp {
-        margin-left: 2.5rem;
+        left: 2.5rem;
     }
     
     .margin-line-mp {
@@ -351,19 +426,36 @@
         font-size: 2.25rem;
     }
     
+    .stat-label-mp {
+        font-size: 1rem;
+    }
+    
     .profile-avatar-mp {
-        width: 110px;
-        height: 110px;
+        width: 110px !important;
+        height: 110px !important;
     }
     
     .profile-actions-mp {
         flex-direction: column;
     }
+    
+    .journal-button-mp {
+        width: 100%;
+        justify-content: center;
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+    
+    .profile-bio-mp {
+        text-indent: 0;
+        font-size: 1rem;
+    }
 }
 
-@media (max-width: 480px) {
+/* Mobile Landscape (481px - 575px) */
+@media (max-width: 575px) {
     .profile-container-mp {
-        padding: 1rem 0.5rem;
+        padding: 1.5rem 0.75rem;
     }
     
     .diary-card-mp,
@@ -377,6 +469,73 @@
         transform: translateY(-2px) scale(1.01);
     }
     
+    .notebook-lines-mp {
+        left: 2rem;
+        right: 0.5rem;
+    }
+    
+    .margin-line-mp {
+        left: 2rem;
+    }
+    
+    .card-content-mp {
+        padding: 1.5rem;
+        padding-left: 2.5rem;
+    }
+    
+    .profile-content-mp {
+        padding: 2rem;
+        padding-left: 2.5rem;
+    }
+    
+    .profile-name-mp {
+        font-size: 1.75rem;
+    }
+    
+    .profile-username-mp {
+        font-size: 1rem;
+    }
+    
+    .stat-number-mp {
+        font-size: 2rem;
+    }
+    
+    .stat-label-mp {
+        font-size: 0.9rem;
+    }
+    
+    .profile-avatar-mp {
+        width: 100px !important;
+        height: 100px !important;
+    }
+    
+    .profile-bio-mp {
+        padding: 0.75rem;
+        font-size: 0.95rem;
+    }
+    
+    .profile-meta-mp {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .journal-button-mp {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Mobile Portrait (320px - 480px) */
+@media (max-width: 480px) {
+    .profile-container-mp {
+        padding: 1rem 0.5rem;
+    }
+    
+    /* Hide stats cards on mobile - only show Community component */
+    .stats-sidebar-mp .diary-card-mp:not(:last-child) {
+        display: none;
+    }
+    
     .notebook-lines-mp,
     .margin-line-mp {
         display: none;
@@ -388,15 +547,131 @@
     }
     
     .profile-name-mp {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
+    }
+    
+    .profile-username-mp {
+        font-size: 0.9rem;
     }
     
     .stat-number-mp {
-        font-size: 2rem;
+        font-size: 1.75rem;
+    }
+    
+    .stat-label-mp {
+        font-size: 0.8rem;
+    }
+    
+    .profile-avatar-mp {
+        width: 90px !important;
+        height: 90px !important;
     }
     
     .profile-bio-mp {
         text-indent: 0;
+        padding: 0.5rem;
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .profile-meta-mp {
+        font-size: 0.8rem;
+        padding: 0.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+        text-align: left;
+    }
+    
+    .journal-button-mp {
+        padding: 0.75rem 1rem;
+        font-size: 0.85rem;
+        margin-top: 1rem;
+    }
+    
+    /* Compact milestones grid for mobile */
+    .profile-content-mp .css-gmuwbf {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+    
+    .profile-content-mp .css-gmuwbf > div {
         padding: 0.75rem;
+    }
+    
+    .profile-content-mp .css-gmuwbf .chakra-text:first-child {
+        font-size: 1.25rem;
+    }
+    
+    .profile-content-mp .css-gmuwbf .chakra-text:last-child {
+        font-size: 0.7rem;
+    }
+}
+
+/* Extra Small Mobile (below 320px) */
+@media (max-width: 319px) {
+    .profile-container-mp {
+        padding: 0.75rem 0.25rem;
+    }
+    
+    .card-content-mp,
+    .profile-content-mp {
+        padding: 1rem;
+    }
+    
+    .profile-name-mp {
+        font-size: 1.25rem;
+    }
+    
+    .profile-username-mp {
+        font-size: 0.8rem;
+    }
+    
+    .profile-avatar-mp {
+        width: 80px !important;
+        height: 80px !important;
+    }
+    
+    .journal-button-mp {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.8rem;
+        gap: 0.5rem;
+    }
+    
+    .profile-bio-mp {
+        font-size: 0.8rem;
+        line-height: 1.4;
+    }
+    
+    /* Single column for milestones on very small screens */
+    .profile-content-mp .css-gmuwbf {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+}
+
+/* Landscape orientation adjustments for mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .profile-container-mp {
+        padding: 1rem;
+    }
+    
+    .stats-sidebar-mp {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    
+    .profile-avatar-mp {
+        width: 80px !important;
+        height: 80px !important;
+        margin-bottom: 1rem;
+    }
+    
+    .profile-name-mp {
+        font-size: 1.5rem;
+    }
+    
+    .card-content-mp,
+    .profile-content-mp {
+        padding: 1.5rem;
     }
 }

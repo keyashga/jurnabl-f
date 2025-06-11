@@ -1,4 +1,3 @@
-// components/Navbar.js
 import React, { useState, useEffect } from 'react';
 import {
   Box,
@@ -8,69 +7,85 @@ import {
   Link as ChakraLink,
   Badge,
   useColorModeValue,
+  IconButton,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  useDisclosure,
 } from '@chakra-ui/react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaUserFriends, FaGlobe, FaBookOpen, FaBell, FaUserCircle } from 'react-icons/fa';
+import {
+  FaUserFriends,
+  FaBookOpen,
+  FaBell,
+  FaUserCircle,
+  FaSearch,
+} from 'react-icons/fa';
 import SearchBar from './SearchBar';
 import NotificationsPopup from './Notifications';
 import axios from 'axios';
 import useUserStore from '../stores/userdetails';
 
-const Navbar = () => { // Add userId as prop
+const Navbar = () => {
   const location = useLocation();
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   const [notificationCount, setNotificationCount] = useState(0);
-  const userId = useUserStore((state) => state.userId); // Get userId from Zustand store
+  const userId = useUserStore((state) => state.userId);
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const navItems = [
     { label: 'My Friends', icon: FaUserFriends, path: '/close-circle' },
     { label: 'My Diary', icon: FaBookOpen, path: '/my-diary' },
-    { 
-      label: 'Notifications', 
-      icon: FaBell, 
+    {
+      label: 'Notifications',
+      icon: FaBell,
       path: '/notifications',
       isNotification: true,
-      onClick: () => setIsNotificationsOpen(!isNotificationsOpen)
+      onClick: () => setIsNotificationsOpen(!isNotificationsOpen),
     },
     { label: 'Me', icon: FaUserCircle, path: '/me' },
   ];
 
-  // Fetch notification count
   const fetchNotificationCount = async () => {
     if (!userId) return;
-    
+
     try {
       const token = localStorage.getItem('token');
-      
-      const response = await axios.get(`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/friend-requests/pending`, {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
+
+      const response = await axios.get(
+        `${
+          process.env.REACT_APP_API_URL || 'http://localhost:5000'
+        }/api/friend-requests/pending`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
         }
-      });
-      
-      // Handle the response structure from your backend
-      const notifications = response.data.success ? response.data.data : response.data;
+      );
+
+      const notifications = response.data.success
+        ? response.data.data
+        : response.data;
       setNotificationCount((notifications || []).length);
     } catch (error) {
       console.error('Error fetching notification count:', error);
     }
   };
 
-  // Fetch notification count on component mount and periodically
   useEffect(() => {
     fetchNotificationCount();
-    
-    // Poll for new notifications every 30 seconds
     const interval = setInterval(fetchNotificationCount, 30000);
-    
     return () => clearInterval(interval);
   }, [userId]);
 
-  // Update notification count when notifications popup closes
   const handleNotificationsClose = () => {
     setIsNotificationsOpen(false);
-    fetchNotificationCount(); // Refresh count after closing
+    fetchNotificationCount();
   };
 
   const bgColor = useColorModeValue('white', 'gray.800');
@@ -78,18 +93,26 @@ const Navbar = () => { // Add userId as prop
 
   return (
     <>
-      <Box 
-        bg={bgColor} 
-        boxShadow="sm" 
-        px={4} 
-        py={2} 
-        position="sticky" 
-        top={0} 
+      <Box
+        bg={bgColor}
+        boxShadow="sm"
+        px={{ base: 2, md: 4 }}
+        py={2}
+        position="sticky"
+        top={0}
         zIndex={100}
         borderBottom="1px solid"
         borderColor={borderColor}
       >
-        <Flex maxW="1200px" mx="auto" align="center" justify="space-between">
+        <Flex
+          maxW="1200px"
+          mx="auto"
+          align="center"
+          justify="space-between"
+          direction={{ base: 'column', md: 'row' }}
+          gap={{ base: 3, md: 0 }}
+          textAlign={{ base: 'center', md: 'left' }}
+        >
           {/* Logo and Search */}
           <Flex align="center" gap={4}>
             <Link to="/close-circle">
@@ -104,11 +127,25 @@ const Navbar = () => { // Add userId as prop
                 transition="transform 0.3s ease-in-out"
               />
             </Link>
-            <SearchBar width="250px" />
+
+            {/* Show full SearchBar on md+ screens */}
+            <Box display={{ base: 'none', md: 'block' }}>
+              <SearchBar width="250px" />
+            </Box>
+
+            {/* Search icon on small screens */}
+            <IconButton
+              icon={<FaSearch />}
+              display={{ base: 'inline-flex', md: 'none' }}
+              aria-label="Search"
+              onClick={onOpen}
+              variant="ghost"
+              fontSize="20px"
+            />
           </Flex>
 
           {/* Navigation Icons */}
-          <Flex gap={6}>
+          <Flex gap={6} flexWrap="wrap" justify={{ base: 'center', md: 'flex-end' }}>
             {navItems.map(({ label, icon: Icon, path, isNotification, onClick }) => (
               <Box key={label} position="relative">
                 <ChakraLink
@@ -129,7 +166,7 @@ const Navbar = () => { // Add userId as prop
                   outline="none"
                   _focus={{ boxShadow: 'none' }}
                 >
-                  <Flex direction="column" align="center" fontSize="sm" position="relative">
+                  <Flex direction="column" align="center" fontSize={{ base: 'xs', md: 'sm' }} position="relative">
                     <Box position="relative">
                       <Icon size={20} />
                       {isNotification && notificationCount > 0 && (
@@ -160,10 +197,19 @@ const Navbar = () => { // Add userId as prop
       </Box>
 
       {/* Notifications Popup */}
-      <NotificationsPopup
-        isOpen={isNotificationsOpen}
-        onClose={handleNotificationsClose}
-      />
+      <NotificationsPopup isOpen={isNotificationsOpen} onClose={handleNotificationsClose} />
+
+      {/* Search Modal for mobile */}
+      <Modal isOpen={isOpen} onClose={onClose} isCentered>
+        <ModalOverlay />
+        <ModalContent mx={4}>
+          <ModalHeader>Search</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody pb={4}>
+            <SearchBar width="100%" />
+          </ModalBody>
+        </ModalContent>
+      </Modal>
     </>
   );
 };

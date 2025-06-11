@@ -133,12 +133,7 @@ const JournalForm = ({
 
   return (
     <div style={styles.container}>
-      {/* Spiral binding holes */}
-      <div style={styles.spiralBinding}>
-        {[...Array(12)].map((_, i) => (
-          <div key={i} style={styles.spiralHole}></div>
-        ))}
-      </div>
+      
 
       <div style={styles.diaryPage}>
         {/* Red margin line */}
@@ -251,35 +246,14 @@ const styles = {
     minHeight: '100vh',
     background: '#f8f4f0',
     fontFamily: '"Kalam", "Comic Sans MS", cursive',
-    padding: '2rem',
+    padding: '0rem',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'flex-start',
     position: 'relative'
   },
 
-  spiralBinding: {
-    position: 'absolute',
-    left: '50%',
-    top: '2rem',
-    marginLeft: '-320px',
-    height: '100%',
-    width: '30px',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '40px',
-    paddingTop: '60px'
-  },
-
-  spiralHole: {
-    width: '12px',
-    height: '12px',
-    borderRadius: '50%',
-    background: '#fff',
-    border: '2px solid #ddd',
-    boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.1)'
-  },
+  
 
   diaryPage: {
     width: '600px',
