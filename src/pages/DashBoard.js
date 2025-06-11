@@ -13,6 +13,7 @@ import {
   FaBookReader,
   FaHeart,
   FaUserFriends,
+  FaExclamationTriangle, // Added FaExclamationTriangle import
 } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
@@ -30,6 +31,11 @@ export default function Dashboard() {
         <Text fontSize="lg" color="purple.100" maxW="2xl">
           Your diary entries are stored securely and are never shared without your permission. 
           Write with confidence — your thoughts are safe with us.
+        </Text>
+
+        {/* Caution for Mobile Users - NEWLY ADDED */}
+        <Text fontSize="md" color="yellow.200" maxW="2xl" p={3} bg="purple.700" borderRadius="md">
+          <Icon as={FaExclamationTriangle} mr={2} /> For the best experience and design, we recommend accessing this application on a **laptop or desktop computer**.
         </Text>
 
         {/* Go to My Diary Button */}
