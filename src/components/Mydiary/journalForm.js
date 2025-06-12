@@ -1,5 +1,6 @@
 import React from 'react';
 import { Calendar, Check, Trash2 } from 'lucide-react';
+import useSelectedDayStore from '../../stores/dataStore';
 
 // Mock VisibilitySelector component
 const VisibilitySelector = ({
@@ -55,12 +56,13 @@ const JournalForm = ({
   onIsAnonymousChange = () => {},
   onRemoveImage = () => {}
 }) => {
+  const selectedDay = useSelectedDayStore((state) => state.selectedDay);
   const CHARACTER_LIMIT = 500;
   const [isHeightLimitReached, setIsHeightLimitReached] = React.useState(false);
   const textareaRef = React.useRef(null);
 
   const getCurrentDate = () => {
-    const date = new Date();
+    const date = selectedDay || new Date();
     return date.toLocaleDateString('en-US', { 
       weekday: 'long',
       month: 'long', 

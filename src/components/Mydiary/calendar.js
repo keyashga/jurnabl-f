@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import useSelectedDayStore from '../../stores/dataStore';
 
 const Calendar = ({ selectedDate, calendarViewDate, onDateSelect, onViewDateChange }) => {
+  const setSelectedDay = useSelectedDayStore((state) => state.setSelectedDay);
+  const selectedDay = useSelectedDayStore((state) => state.selectedDay);
   const [showFutureWarning, setShowFutureWarning] = useState(false);
   const [journalDates, setJournalDates] = useState(new Set());
   const [isLoadingJournalDates, setIsLoadingJournalDates] = useState(false);
@@ -76,10 +79,15 @@ const Calendar = ({ selectedDate, calendarViewDate, onDateSelect, onViewDateChan
       setShowFutureWarning(true);
       setTimeout(() => setShowFutureWarning(false), 2000);
     } else {
+      setSelectedDay(currentDate);
       onDateSelect(currentDate);
       if (isMobile) setIsModalOpen(false);
     }
   };
+
+useEffect(() => {
+  console.log('Selected date updated:', selectedDay);
+}, [selectedDay]);
 
   const hasJournalEntry = (date) => {
     const dateString = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
