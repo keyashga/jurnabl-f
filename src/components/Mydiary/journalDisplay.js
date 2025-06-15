@@ -195,7 +195,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'flex-start',
-    position: 'relative'
+    position: 'relative',
   },
 
   
@@ -208,7 +208,7 @@ const styles = {
     padding: '60px 40px 40px 80px',
     marginLeft: '1rem',
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
 
   marginLine: {

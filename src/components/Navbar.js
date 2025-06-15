@@ -108,32 +108,35 @@ const Navbar = () => {
           maxW="1200px"
           mx="auto"
           align="center"
-          justify="space-between"
-          direction={{ base: 'column', md: 'row' }}
-          gap={{ base: 3, md: 0 }}
-          textAlign={{ base: 'center', md: 'left' }}
+          justify={{ base: 'center', md: 'space-between' }}
         >
-          {/* Logo and Search */}
-          <Flex align="center" gap={4}>
-            <Link to="/close-circle">
-              <Image
-                src="/3.png"
-                boxSize="34px"
-                alt="App logo"
-                _hover={{
-                  transform: 'scale(1.2)',
-                  transition: 'transform 0.3s ease-in-out',
-                }}
-                transition="transform 0.3s ease-in-out"
-              />
-            </Link>
+          {/* Logo - Hidden on mobile */}
+          <Link to="/close-circle" display={{ base: 'none', md: 'block' }}>
+            <Image
+              src="/ff.png"
+              boxSize="34px"
+              alt="App logo"
+              _hover={{
+                transform: 'scale(1.2)',
+                transition: 'transform 0.3s ease-in-out',
+              }}
+              transition="transform 0.3s ease-in-out"
+            />
+          </Link>
 
-            {/* Show full SearchBar on md+ screens */}
-            <Box display={{ base: 'none', md: 'block' }}>
-              <SearchBar width="250px" />
-            </Box>
+          {/* Desktop Search Bar */}
+          <Box display={{ base: 'none', md: 'block' }}>
+            <SearchBar width="250px" />
+          </Box>
 
-            {/* Search icon on small screens */}
+          {/* Navigation Icons + Mobile Search */}
+          <Flex 
+            gap={{ base: 4, md: 6 }} 
+            align="center" 
+            justify={{ base: 'space-around', md: 'flex-end' }}
+            flex={{ base: 1, md: 'none' }}
+          >
+            {/* Mobile Search Icon */}
             <IconButton
               icon={<FaSearch />}
               display={{ base: 'inline-flex', md: 'none' }}
@@ -141,11 +144,10 @@ const Navbar = () => {
               onClick={onOpen}
               variant="ghost"
               fontSize="20px"
+              size="sm"
             />
-          </Flex>
-
-          {/* Navigation Icons */}
-          <Flex gap={6} flexWrap="wrap" justify={{ base: 'center', md: 'flex-end' }}>
+            
+            {/* Navigation Items */}
             {navItems.map(({ label, icon: Icon, path, isNotification, onClick }) => (
               <Box key={label} position="relative">
                 <ChakraLink
@@ -166,7 +168,12 @@ const Navbar = () => {
                   outline="none"
                   _focus={{ boxShadow: 'none' }}
                 >
-                  <Flex direction="column" align="center" fontSize={{ base: 'xs', md: 'sm' }} position="relative">
+                  <Flex 
+                    direction="column" 
+                    align="center" 
+                    fontSize={{ base: 'xs', md: 'sm' }} 
+                    position="relative"
+                  >
                     <Box position="relative">
                       <Icon size={20} />
                       {isNotification && notificationCount > 0 && (
@@ -187,7 +194,10 @@ const Navbar = () => {
                         </Badge>
                       )}
                     </Box>
-                    <Text mt={1}>{label}</Text>
+                    {/* Hide text labels on mobile screens */}
+                    <Text mt={1} display={{ base: 'none', md: 'block' }}>
+                      {label}
+                    </Text>
                   </Flex>
                 </ChakraLink>
               </Box>

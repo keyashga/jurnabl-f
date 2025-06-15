@@ -599,14 +599,14 @@ const mobileStyles = {
 // Desktop styles (original styles)
 const styles = {
   container: {
-    minHeight: '100vh',
+    minHeight: '100%',
     background: '#f8f4f0',
     fontFamily: '"Kalam", "Comic Sans MS", cursive',
-    padding: '2rem',
+    padding: '0rem 2rem 2rem 2rem',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'flex-start',
-    position: 'relative'
+    alignItems: 'center',
+    position: 'relative',
   },
 
   spiralBinding: {
@@ -633,13 +633,14 @@ const styles = {
   },
 
   calendarPage: {
-    width: '500px',
+    borderRadius: '15px',
+    width: '400px',
     minHeight: '300px',
     background: '#fff',
     boxShadow: '0 4px 20px rgba(0,0,0,0.1), 0 0 0 1px #e5e5e5',
     position: 'relative',
-    padding: '40px 40px 40px 80px',
-    marginLeft: '3rem',
+    padding: '30px', // Change from '40px 40px 40px 80px'
+    marginLeft: '2rem', 
     backgroundImage: `
       repeating-linear-gradient(
         transparent,
@@ -648,16 +649,6 @@ const styles = {
       )
     `,
     backgroundSize: '100% 32px'
-  },
-
-  marginLine: {
-    position: 'absolute',
-    left: '70px',
-    top: '0',
-    bottom: '0',
-    width: '2px',
-    background: '#ff6b6b',
-    opacity: 0.3
   },
 
   warningPopup: {
@@ -720,7 +711,7 @@ const styles = {
   },
 
   monthText: {
-    fontSize: '28px',
+    fontSize: '24px',
     color: '#2c3e50',
     margin: '0',
     fontWeight: '600',
@@ -741,14 +732,14 @@ const styles = {
     background: '#f8f9fa',
     border: '2px dashed #dee2e6',
     borderRadius: '8px',
-    padding: '15px 20px',
-    marginBottom: '25px',
+    padding: '12px 16px',
+    marginBottom: '20px',
     position: 'relative',
     zIndex: 1
   },
 
   selectedDateText: {
-    fontSize: '16px',
+    fontSize: '14px',
     color: '#495057',
     fontWeight: '500',
     textAlign: 'center'
@@ -757,16 +748,16 @@ const styles = {
   calendarGrid: {
     display: 'grid',
     gridTemplateColumns: 'repeat(7, 1fr)',
-    gap: '2px',
-    marginBottom: '30px',
+    gap: '1px',
+    marginBottom: '20px',
     position: 'relative',
     zIndex: 1
   },
 
   dayHeader: {
-    padding: '10px 8px',
+    padding: '8px 6px',
     textAlign: 'center',
-    fontSize: '14px',
+    fontSize: '12px',
     fontWeight: '600',
     color: '#666',
     borderBottom: '2px solid #e8f4f8'
@@ -777,7 +768,7 @@ const styles = {
   },
 
   dayButton: {
-    height: '45px',
+    height: '35px',
     border: 'none',
     background: 'transparent',
     cursor: 'pointer',
@@ -786,7 +777,7 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
-    fontSize: '14px',
+    fontSize: '12px',
     fontFamily: 'inherit',
     transition: 'all 0.2s ease',
     color: '#333'

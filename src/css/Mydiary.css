@@ -47,7 +47,7 @@
   z-index: 1;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0.5rem 2rem 2rem 2rem; /* Reduced top padding from 2rem to 0.5rem */
 }
 
 /* Main Grid Layout - Desktop First */
@@ -101,7 +101,7 @@
   flex-direction: column;
   gap: 1.5rem;
   position: sticky;
-  top: 2rem;
+  top: 0.5rem; /* Reduced from 2rem to 0.5rem */
 }
 
 /* Loading and Error Messages */
@@ -130,7 +130,7 @@
 /* Large Tablets (1024px and below) */
 @media (max-width: 1024px) {
   .content-wrapper {
-    padding: 1.5rem;
+    padding: 0.5rem 1.5rem 1.5rem 1.5rem; /* Reduced top padding */
   }
   
   .main-grid {
@@ -146,7 +146,7 @@
 /* Small Tablets (768px and below) */
 @media (max-width: 768px) {
   .content-wrapper {
-    padding: 1rem;
+    padding: 0.5rem 1rem 1rem 1rem; /* Reduced top padding */
     max-width: 100%;
   }
   
@@ -185,7 +185,7 @@
   }
   
   .content-wrapper {
-    padding: 0.75rem;
+    padding: 0.5rem 0.75rem 0.75rem 0.75rem; /* Reduced top padding */
   }
   
   .sidebar {
@@ -222,7 +222,7 @@
 /* Extra Small Phones (360px and below) */
 @media (max-width: 360px) {
   .content-wrapper {
-    padding: 0.5rem;
+    padding: 0.25rem 0.5rem 0.5rem 0.5rem; /* Reduced top padding */
   }
   
   .diary-container {
