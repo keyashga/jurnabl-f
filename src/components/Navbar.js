@@ -93,25 +93,27 @@ const Navbar = () => {
 
   return (
     <>
+      {/* Desktop Navbar - Top */}
       <Box
         bg={bgColor}
         boxShadow="sm"
-        px={{ base: 2, md: 4 }}
+        px={4}
         py={2}
         position="sticky"
         top={0}
         zIndex={100}
         borderBottom="1px solid"
         borderColor={borderColor}
+        display={{ base: 'none', md: 'block' }}
       >
         <Flex
           maxW="1200px"
           mx="auto"
           align="center"
-          justify={{ base: 'center', md: 'space-between' }}
+          justify="space-between"
         >
-          {/* Logo - Hidden on mobile */}
-          <Link to="/close-circle" display={{ base: 'none', md: 'block' }}>
+          {/* Logo */}
+          <Link to="/close-circle">
             <Image
               src="/ff.png"
               boxSize="34px"
@@ -125,29 +127,10 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Search Bar */}
-          <Box display={{ base: 'none', md: 'block' }}>
-            <SearchBar width="250px" />
-          </Box>
+          <SearchBar width="250px" />
 
-          {/* Navigation Icons + Mobile Search */}
-          <Flex 
-            gap={{ base: 4, md: 6 }} 
-            align="center" 
-            justify={{ base: 'space-around', md: 'flex-end' }}
-            flex={{ base: 1, md: 'none' }}
-          >
-            {/* Mobile Search Icon */}
-            <IconButton
-              icon={<FaSearch />}
-              display={{ base: 'inline-flex', md: 'none' }}
-              aria-label="Search"
-              onClick={onOpen}
-              variant="ghost"
-              fontSize="20px"
-              size="sm"
-            />
-            
-            {/* Navigation Items */}
+          {/* Desktop Navigation Icons */}
+          <Flex gap={6} align="center">
             {navItems.map(({ label, icon: Icon, path, isNotification, onClick }) => (
               <Box key={label} position="relative">
                 <ChakraLink
@@ -168,12 +151,7 @@ const Navbar = () => {
                   outline="none"
                   _focus={{ boxShadow: 'none' }}
                 >
-                  <Flex 
-                    direction="column" 
-                    align="center" 
-                    fontSize={{ base: 'xs', md: 'sm' }} 
-                    position="relative"
-                  >
+                  <Flex direction="column" align="center" fontSize="sm" position="relative">
                     <Box position="relative">
                       <Icon size={20} />
                       {isNotification && notificationCount > 0 && (
@@ -194,10 +172,7 @@ const Navbar = () => {
                         </Badge>
                       )}
                     </Box>
-                    {/* Hide text labels on mobile screens */}
-                    <Text mt={1} display={{ base: 'none', md: 'block' }}>
-                      {label}
-                    </Text>
+                    <Text mt={1}>{label}</Text>
                   </Flex>
                 </ChakraLink>
               </Box>
@@ -205,6 +180,108 @@ const Navbar = () => {
           </Flex>
         </Flex>
       </Box>
+
+      {/* Mobile Navbar - Bottom */}
+      <Box
+        bg={bgColor}
+        boxShadow="0 -2px 10px rgba(0, 0, 0, 0.1)"
+        px={2}
+        py={2}
+        position="fixed"
+        bottom={0}
+        left={0}
+        right={0}
+        zIndex={100}
+        borderTop="1px solid"
+        borderColor={borderColor}
+        display={{ base: 'block', md: 'none' }}
+        // Add safe area padding for phones with home indicators
+        pb={{ base: 'env(safe-area-inset-bottom, 8px)' }}
+      >
+        <Flex
+          maxW="100%"
+          mx="auto"
+          align="center"
+          justify="space-around"
+        >
+          {/* Mobile Search Icon */}
+          <Box textAlign="center">
+            <IconButton
+              icon={<FaSearch />}
+              aria-label="Search"
+              onClick={onOpen}
+              variant="ghost"
+              fontSize="20px"
+              size="sm"
+              color="gray.600"
+              _hover={{
+                color: 'blue.700',
+                transform: 'scale(1.1)',
+              }}
+              transition="all 0.3s ease-in-out"
+            />
+          </Box>
+          
+          {/* Mobile Navigation Items */}
+          {navItems.map(({ label, icon: Icon, path, isNotification, onClick }) => (
+            <Box key={label} position="relative" textAlign="center">
+              <ChakraLink
+                as={isNotification ? 'button' : Link}
+                to={!isNotification ? path : undefined}
+                onClick={isNotification ? onClick : undefined}
+                color={location.pathname === path ? 'blue.600' : 'gray.600'}
+                _hover={{
+                  textDecoration: 'none',
+                  color: 'blue.700',
+                  transform: 'scale(1.1)',
+                }}
+                transition="all 0.3s ease-in-out"
+                cursor="pointer"
+                bg="transparent"
+                border="none"
+                outline="none"
+                _focus={{ boxShadow: 'none' }}
+                display="flex"
+                flexDirection="column"
+                alignItems="center"
+                minW="60px"
+                py={1}
+              >
+                <Box position="relative">
+                  <Icon size={22} />
+                  {isNotification && notificationCount > 0 && (
+                    <Badge
+                      colorScheme="red"
+                      borderRadius="full"
+                      fontSize="xs"
+                      position="absolute"
+                      top="-8px"
+                      right="-8px"
+                      minW="18px"
+                      h="18px"
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                    >
+                      {notificationCount > 99 ? '99+' : notificationCount}
+                    </Badge>
+                  )}
+                </Box>
+              </ChakraLink>
+            </Box>
+          ))}
+        </Flex>
+      </Box>
+
+      {/* Add bottom padding to body content on mobile to prevent navbar overlap */}
+      <Box 
+        display={{ base: 'block', md: 'none' }} 
+        h="80px" 
+        w="full" 
+        position="fixed" 
+        bottom={0} 
+        pointerEvents="none"
+      />
 
       {/* Notifications Popup */}
       <NotificationsPopup isOpen={isNotificationsOpen} onClose={handleNotificationsClose} />

@@ -4,6 +4,7 @@ import './css/closecircle.css';
 import axios from 'axios';
 
 const CloseCircle = () => {
+
   const [journals, setJournals] = useState([]);
   const [likedPosts, setLikedPosts] = useState(new Set());
   const [loading, setLoading] = useState(true);
@@ -12,6 +13,21 @@ const CloseCircle = () => {
   const [hasMore, setHasMore] = useState(false);
   const [error, setError] = useState(null);
 
+  useEffect(() => {
+  const link = document.createElement('link');
+  link.href = 'https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap';
+  link.rel = 'stylesheet';
+  document.head.appendChild(link);
+
+  return () => {
+    // Cleanup on unmount
+    const existingLink = document.querySelector('link[href*="Kalam"]');
+    if (existingLink) {
+      document.head.removeChild(existingLink);
+    }
+  };
+}, []);
+  
   // Get auth token (adjust this based on how you store authentication)
   const getAuthToken = () => {
     return localStorage.getItem('token') || sessionStorage.getItem('token');

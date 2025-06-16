@@ -61,6 +61,22 @@ const JournalForm = ({
   const [isHeightLimitReached, setIsHeightLimitReached] = React.useState(false);
   const textareaRef = React.useRef(null);
 
+  // Load Google Fonts
+  React.useEffect(() => {
+    const link = document.createElement('link');
+    link.href = 'https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap';
+    link.rel = 'stylesheet';
+    document.head.appendChild(link);
+
+    return () => {
+      // Cleanup on unmount
+      const existingLink = document.querySelector('link[href*="Patrick+Hand"]');
+      if (existingLink) {
+        document.head.removeChild(existingLink);
+      }
+    };
+  }, []);
+
   const getCurrentDate = () => {
     const date = selectedDay || new Date();
     return date.toLocaleDateString('en-US', { 
@@ -247,7 +263,7 @@ const styles = {
   container: {
     minHeight: '100vh',
     background: '#f8f4f0',
-    fontFamily: '"Kalam", "Comic Sans MS", sans-serif',
+    fontFamily: 'Patrick+Hand, cursive',
     padding: '0rem',
     display: 'flex',
     justifyContent: 'center',
@@ -313,13 +329,15 @@ const styles = {
     fontSize: '18px',
     color: '#333',
     margin: '0',
-    fontWeight: '600'
+    fontWeight: '600',
+    fontFamily: 'Kalam, cursive'
   },
 
   timeText: {
     fontSize: '14px',
     color: '#888',
-    marginLeft: 'auto'
+    marginLeft: 'auto',
+    fontFamily: 'Kalam, cursive'
   },
 
   savedIndicator: {
@@ -330,7 +348,8 @@ const styles = {
     color: '#4a7c59',
     padding: '4px 8px',
     borderRadius: '12px',
-    fontSize: '12px'
+    fontSize: '12px',
+    fontFamily: 'Kalam, cursive'
   },
 
   checkIcon: {
@@ -350,7 +369,7 @@ const styles = {
     outline: 'none',
     background: 'transparent',
     fontSize: '22px',
-    fontFamily: 'inherit',
+    fontFamily: 'Kalam, cursive',
     color: '#2c3e50',
     fontWeight: '600',
     lineHeight: '32px',
@@ -373,7 +392,8 @@ const styles = {
     borderRadius: '8px',
     border: '1px solid #e9ecef',
     width: 'fit-content',
-    fontSize: '14px'
+    fontSize: '14px',
+    fontFamily: 'Kalam, cursive'
   },
 
   visibilityGroup: {
@@ -384,7 +404,8 @@ const styles = {
 
   visibilityLabel: {
     color: '#495057',
-    fontWeight: '500'
+    fontWeight: '500',
+    fontFamily: 'Kalam, cursive'
   },
 
   visibilitySelect: {
@@ -392,7 +413,8 @@ const styles = {
     borderRadius: '4px',
     padding: '4px 8px',
     fontSize: '14px',
-    background: '#fff'
+    background: '#fff',
+    fontFamily: 'Kalam, cursive'
   },
 
   anonymousGroup: {
@@ -405,7 +427,8 @@ const styles = {
     alignItems: 'center',
     gap: '6px',
     cursor: 'pointer',
-    color: '#495057'
+    color: '#495057',
+    fontFamily: 'Kalam, cursive'
   },
 
   checkbox: {
@@ -422,7 +445,8 @@ const styles = {
     fontSize: '18px',
     fontStyle: 'italic',
     color: '#5d4e75',
-    fontWeight: '500'
+    fontWeight: '500',
+    fontFamily: 'Kalam, cursive'
   },
 
   contentSection: {
@@ -442,7 +466,7 @@ const styles = {
     resize: 'none',
     background: 'transparent',
     fontSize: '16px',
-    fontFamily: 'inherit',
+    fontFamily: 'Kalam, cursive',
     color: '#2c3e50',
     lineHeight: '32px',
     padding: '0',
@@ -519,16 +543,19 @@ const styles = {
   statsText: {
     fontSize: '12px',
     color: '#999',
-    fontStyle: 'italic'
+    fontStyle: 'italic',
+    fontFamily: 'Kalam, cursive'
   },
 
   limitWarning: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontFamily: 'Kalam, cursive'
   },
 
   heightLimitWarning: {
     fontWeight: 'bold',
-    color: '#ff6b6b'
+    color: '#ff6b6b',
+    fontFamily: 'Kalam, cursive'
   }
 };
 

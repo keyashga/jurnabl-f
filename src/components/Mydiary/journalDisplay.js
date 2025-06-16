@@ -9,6 +9,22 @@ const JournalDisplay = ({ journal, visibilityOptions, onEdit, onDelete }) => {
   });
   const [loading, setLoading] = useState(true);
 
+  // Load Google Fonts
+  useEffect(() => {
+    const link = document.createElement('link');
+    link.href = 'https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap';
+    link.rel = 'stylesheet';
+    document.head.appendChild(link);
+
+    return () => {
+      // Cleanup on unmount
+      const existingLink = document.querySelector('link[href*="Patrick+Hand"]');
+      if (existingLink) {
+        document.head.removeChild(existingLink);
+      }
+    };
+  }, []);
+
   // Mock data loading simulation
   useEffect(() => {
     const loadData = async () => {
@@ -85,8 +101,6 @@ const JournalDisplay = ({ journal, visibilityOptions, onEdit, onDelete }) => {
 
   return (
     <div style={styles.container}>
-      
-
       <div style={styles.diaryPage}>
         {/* Red margin line */}
         <div style={styles.marginLine}></div>
@@ -108,7 +122,6 @@ const JournalDisplay = ({ journal, visibilityOptions, onEdit, onDelete }) => {
         {/* Author info section */}
         <div style={styles.authorSection}>
           <div style={styles.authorInfo}>
-            
             <div style={styles.authorDetails}>
               <div style={styles.authorMeta}>
                 <span style={styles.visibilityBadge}>
@@ -163,8 +176,6 @@ const JournalDisplay = ({ journal, visibilityOptions, onEdit, onDelete }) => {
 
         {/* Action buttons section - moved to bottom */}
         <div style={styles.actionsSection}>
-          
-
           <div style={styles.actionButtons}>
             {onEdit && (
               <button onClick={onEdit} style={styles.editButton}>
@@ -190,7 +201,7 @@ const styles = {
   container: {
     minHeight: '100vh',
     background: '#f8f4f0',
-    fontFamily: '"Kalam", "Comic Sans MS", sans-serif',
+    fontFamily: 'Patrick+Hand, cursive',
     padding: '0rem',
     display: 'flex',
     justifyContent: 'center',
@@ -198,7 +209,6 @@ const styles = {
     position: 'relative',
   },
 
-  
   diaryPage: {
     width: '600px',
     minHeight: '800px',
@@ -256,13 +266,15 @@ const styles = {
     fontSize: '18px',
     color: '#333',
     margin: '0',
-    fontWeight: '600'
+    fontWeight: '600',
+    fontFamily: 'Kalam, cursive'
   },
 
   timeText: {
     fontSize: '14px',
     color: '#888',
-    marginLeft: 'auto'
+    marginLeft: 'auto',
+    fontFamily: 'Kalam, cursive'
   },
 
   authorSection: {
@@ -317,7 +329,8 @@ const styles = {
   authorName: {
     fontSize: '14px',
     color: '#495057',
-    fontWeight: '600'
+    fontWeight: '600',
+    fontFamily: 'Kalam, cursive'
   },
 
   authorMeta: {
@@ -325,11 +338,13 @@ const styles = {
     alignItems: 'center',
     gap: '8px',
     fontSize: '12px',
-    color: '#6c757d'
+    color: '#6c757d',
+    fontFamily: 'Kalam, cursive'
   },
 
   visibilityBadge: {
-    fontSize: '12px'
+    fontSize: '12px',
+    fontFamily: 'Kalam, cursive'
   },
 
   metaSeparator: {
@@ -337,7 +352,8 @@ const styles = {
   },
 
   anonymousBadge: {
-    fontSize: '12px'
+    fontSize: '12px',
+    fontFamily: 'Kalam, cursive'
   },
 
   titleSection: {
@@ -348,7 +364,7 @@ const styles = {
 
   titleText: {
     fontSize: '22px',
-    fontFamily: 'inherit',
+    fontFamily: 'Kalam, cursive',
     color: '#2c3e50',
     fontWeight: '600',
     lineHeight: '32px',
@@ -368,7 +384,8 @@ const styles = {
     fontSize: '18px',
     fontStyle: 'italic',
     color: '#5d4e75',
-    fontWeight: '500'
+    fontWeight: '500',
+    fontFamily: 'Kalam, cursive'
   },
 
   contentSection: {
@@ -380,7 +397,7 @@ const styles = {
 
   contentDisplay: {
     fontSize: '16px',
-    fontFamily: 'inherit',
+    fontFamily: 'Kalam, cursive',
     color: '#2c3e50',
     lineHeight: '32px',
     minHeight: '200px',
@@ -390,7 +407,8 @@ const styles = {
   contentLine: {
     minHeight: '32px',
     display: 'flex',
-    alignItems: 'baseline'
+    alignItems: 'baseline',
+    fontFamily: 'Kalam, cursive'
   },
 
   imageContainer: {
@@ -435,7 +453,8 @@ const styles = {
   statsText: {
     fontSize: '12px',
     color: '#999',
-    fontStyle: 'italic'
+    fontStyle: 'italic',
+    fontFamily: 'Kalam, cursive'
   },
 
   actionsSection: {
@@ -461,7 +480,8 @@ const styles = {
     cursor: 'pointer',
     fontSize: '14px',
     color: '#495057',
-    transition: 'all 0.2s ease'
+    transition: 'all 0.2s ease',
+    fontFamily: 'Kalam, cursive'
   },
 
   likedButton: {
@@ -485,7 +505,8 @@ const styles = {
     alignItems: 'center',
     gap: '6px',
     color: '#6c757d',
-    fontSize: '14px'
+    fontSize: '14px',
+    fontFamily: 'Kalam, cursive'
   },
 
   eyeIcon: {
@@ -509,7 +530,8 @@ const styles = {
     cursor: 'pointer',
     fontSize: '14px',
     color: '#28a745',
-    transition: 'all 0.2s ease'
+    transition: 'all 0.2s ease',
+    fontFamily: 'Kalam, cursive'
   },
 
   editIcon: {
@@ -528,7 +550,8 @@ const styles = {
     cursor: 'pointer',
     fontSize: '14px',
     color: '#dc3545',
-    transition: 'all 0.2s ease'
+    transition: 'all 0.2s ease',
+    fontFamily: 'Kalam, cursive'
   },
 
   deleteIcon: {
