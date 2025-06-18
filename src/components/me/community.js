@@ -298,7 +298,7 @@ const Community = () => {
     border: '1px solid rgba(139, 69, 19, 0.15)',
     boxShadow: '0 2px 8px rgba(139, 69, 19, 0.08)',
     padding: '24px',
-    maxWidth: '320px',
+    width: '25rem',
     margin: '0 auto',
     transition: 'all 0.2s ease'
   }}

@@ -138,10 +138,10 @@ const Navbar = () => {
                   to={!isNotification ? path : undefined}
                   onClick={isNotification ? onClick : undefined}
                   textAlign="center"
-                  color={location.pathname === path ? 'blue.600' : 'gray.600'}
+                  color={location.pathname === path ? 'orange.500' : 'gray.600'}
                   _hover={{
                     textDecoration: 'none',
-                    color: 'blue.700',
+                    color: 'orange.400',
                     transform: 'scale(1.1)',
                   }}
                   transition="all 0.3s ease-in-out"
@@ -185,8 +185,8 @@ const Navbar = () => {
       <Box
         bg={bgColor}
         boxShadow="0 -2px 10px rgba(0, 0, 0, 0.1)"
-        px={2}
-        py={2}
+        px={4}
+        py={4}
         position="fixed"
         bottom={0}
         left={0}
@@ -196,43 +196,47 @@ const Navbar = () => {
         borderColor={borderColor}
         display={{ base: 'block', md: 'none' }}
         // Add safe area padding for phones with home indicators
-        pb={{ base: 'env(safe-area-inset-bottom, 8px)' }}
+        pb={{ base: 'calc(env(safe-area-inset-bottom, 0px) + 16px)' }}
+        minH="70px"
       >
         <Flex
           maxW="100%"
           mx="auto"
           align="center"
           justify="space-around"
+          h="full"
         >
           {/* Mobile Search Icon */}
-          <Box textAlign="center">
+          <Flex direction="column" align="center" justify="center">
             <IconButton
               icon={<FaSearch />}
               aria-label="Search"
               onClick={onOpen}
               variant="ghost"
               fontSize="20px"
-              size="sm"
+              size="md"
               color="gray.600"
               _hover={{
-                color: 'blue.700',
+                color: 'orange.400',
                 transform: 'scale(1.1)',
               }}
               transition="all 0.3s ease-in-out"
+              minW="50px"
+              h="50px"
             />
-          </Box>
+          </Flex>
           
           {/* Mobile Navigation Items */}
           {navItems.map(({ label, icon: Icon, path, isNotification, onClick }) => (
-            <Box key={label} position="relative" textAlign="center">
+            <Flex key={label} direction="column" align="center" justify="center" position="relative">
               <ChakraLink
                 as={isNotification ? 'button' : Link}
                 to={!isNotification ? path : undefined}
                 onClick={isNotification ? onClick : undefined}
-                color={location.pathname === path ? 'blue.600' : 'gray.600'}
+                color={location.pathname === path ? 'orange.500' : 'gray.600'}
                 _hover={{
                   textDecoration: 'none',
-                  color: 'blue.700',
+                  color: 'orange.400',
                   transform: 'scale(1.1)',
                 }}
                 transition="all 0.3s ease-in-out"
@@ -244,11 +248,13 @@ const Navbar = () => {
                 display="flex"
                 flexDirection="column"
                 alignItems="center"
-                minW="60px"
-                py={1}
+                justifyContent="center"
+                minW="50px"
+                h="50px"
+                borderRadius="lg"
               >
                 <Box position="relative">
-                  <Icon size={22} />
+                  <Icon size={20} />
                   {isNotification && notificationCount > 0 && (
                     <Badge
                       colorScheme="red"
@@ -268,7 +274,7 @@ const Navbar = () => {
                   )}
                 </Box>
               </ChakraLink>
-            </Box>
+            </Flex>
           ))}
         </Flex>
       </Box>
@@ -276,7 +282,7 @@ const Navbar = () => {
       {/* Add bottom padding to body content on mobile to prevent navbar overlap */}
       <Box 
         display={{ base: 'block', md: 'none' }} 
-        h="80px" 
+        h="90px" 
         w="full" 
         position="fixed" 
         bottom={0} 

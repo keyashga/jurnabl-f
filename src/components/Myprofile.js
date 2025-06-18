@@ -236,8 +236,7 @@ const UserProfile = () => {
         <div className="profile-main-mp">
           {/* Left Sidebar - Stats */}
           <div className="stats-sidebar-mp">
-            {/* Reading Stats */}
-              <div className="diary-card-mp">
+              {/* <div className="diary-card-mp">
                 <div className="notebook-lines-mp"></div>
                 <div className="margin-line-mp"></div>
                 <div className="card-content-mp">
@@ -249,7 +248,6 @@ const UserProfile = () => {
                   </Text>
                 </div>
               </div>
-            {/* Hearts Received */}
             <div className="diary-card-mp">
               <div className="notebook-lines-mp"></div>
               <div className="margin-line-mp"></div>
@@ -261,7 +259,7 @@ const UserProfile = () => {
                   {userData.totalLikes === 0 ? 'Share your story to touch hearts' : 'People loved your words'}
                 </Text>
               </div>
-            </div>
+            </div> */}
 
             {/* Writing Consistency
             <div className="diary-card-mp">
