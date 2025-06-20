@@ -87,6 +87,7 @@
             clearForm();
           }
         } else {
+
           setCurrentJournal(null);
           clearForm();
         }

@@ -68,6 +68,15 @@ const CloseCircle = () => {
       });
 
       if (!response.ok) {
+
+        if (response.status === 401) {
+        // Token invalid or expired
+        localStorage.removeItem('token');
+        sessionStorage.removeItem('token');
+        window.location.href = '/login';  // Navigate to login
+        return;
+      }
+
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 

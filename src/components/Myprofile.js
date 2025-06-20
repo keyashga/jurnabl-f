@@ -92,6 +92,9 @@ const UserProfile = () => {
           duration: 3000,
           isClosable: true,
         });
+            localStorage.removeItem('token');
+            sessionStorage.removeItem('token');
+            window.location.href = '/login';  // Navigate to login
       }
     };
 
