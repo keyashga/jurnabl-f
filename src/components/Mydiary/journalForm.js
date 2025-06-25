@@ -1,6 +1,11 @@
 import React from 'react';
 import { Calendar, Check, Trash2 } from 'lucide-react';
-import useSelectedDayStore from '../../stores/dataStore';
+import { useEffect } from 'react';
+
+// Mock store hook
+const useSelectedDayStore = (selector) => {
+  return selector({ selectedDay: new Date() });
+};
 
 // Mock VisibilitySelector component
 const VisibilitySelector = ({
@@ -40,7 +45,6 @@ const VisibilitySelector = ({
   );
 };
 
-
 const JournalForm = ({
   title = "",
   content = "",
@@ -57,25 +61,25 @@ const JournalForm = ({
   onRemoveImage = () => {}
 }) => {
   const selectedDay = useSelectedDayStore((state) => state.selectedDay);
-  const CHARACTER_LIMIT = 500;
+  const CHARACTER_LIMIT = 900; // Increased from 500 to 900
   const [isHeightLimitReached, setIsHeightLimitReached] = React.useState(false);
   const textareaRef = React.useRef(null);
 
   // Load Google Fonts
-  React.useEffect(() => {
-    const link = document.createElement('link');
-    link.href = 'https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap';
-    link.rel = 'stylesheet';
-    document.head.appendChild(link);
-
-    return () => {
-      // Cleanup on unmount
-      const existingLink = document.querySelector('link[href*="Patrick+Hand"]');
-      if (existingLink) {
-        document.head.removeChild(existingLink);
-      }
-    };
-  }, []);
+    useEffect(() => {
+      const link = document.createElement('link');
+      link.href = 'https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap';
+      link.rel = 'stylesheet';
+      document.head.appendChild(link);
+  
+      return () => {
+        // Cleanup on unmount
+        const existingLink = document.querySelector('link[href*="Patrick+Hand"]');
+        if (existingLink) {
+          document.head.removeChild(existingLink);
+        }
+      };
+    }, []);
 
   const getCurrentDate = () => {
     const date = selectedDay || new Date();
@@ -147,12 +151,10 @@ const JournalForm = ({
   }, [content]);
 
   const remainingChars = CHARACTER_LIMIT - content.length;
-  const isNearLimit = remainingChars <= 50;
+  const isNearLimit = remainingChars <= 50; // Back to 50 characters threshold
 
   return (
     <div style={styles.container}>
-      
-
       <div style={styles.diaryPage}>
         {/* Red margin line */}
         <div style={styles.marginLine}></div>
@@ -172,7 +174,7 @@ const JournalForm = ({
 
         {/* Lined paper effect */}
         <div style={styles.paperLines}>
-          {[...Array(25)].map((_, i) => (
+          {[...Array(35)].map((_, i) => (
             <div key={i} style={styles.paperLine}></div>
           ))}
         </div>
@@ -268,14 +270,12 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'flex-start',
-    position: 'relative'
+    position: 'relative',
   },
-
-  
 
   diaryPage: {
     width: '600px',
-    height: '800px',
+    height: '900px', // Increased from 800px to 1000px
     background: '#fff',
     boxShadow: '0 4px 20px rgba(0,0,0,0.1), 0 0 0 1px #e5e5e5',
     position: 'relative',
@@ -435,26 +435,12 @@ const styles = {
     margin: '0'
   },
 
-  greetingSection: {
-    marginBottom: '20px',
-    position: 'relative',
-    zIndex: 1
-  },
-
-  greeting: {
-    fontSize: '18px',
-    fontStyle: 'italic',
-    color: '#5d4e75',
-    fontWeight: '500',
-    fontFamily: 'Kalam, cursive'
-  },
-
   contentSection: {
-    paddingTop:'10px',
+    paddingTop: '10px',
     position: 'relative',
     zIndex: 1,
     marginBottom: '30px',
-    height: '400px',
+    height: '550px', // Increased from 400px to 550px
     overflow: 'hidden'
   },
 
@@ -470,9 +456,9 @@ const styles = {
     color: '#2c3e50',
     lineHeight: '32px',
     padding: '0',
-    overflow: 'auto',
-    scrollbarWidth: 'thin',
-    scrollbarColor: '#ccc transparent'
+    overflow: 'hidden', // Changed from 'auto' to 'hidden' to prevent scroll
+    scrollbarWidth: 'none', // Hide scrollbar
+    msOverflowStyle: 'none' // Hide scrollbar for IE
   },
 
   imageContainer: {
@@ -504,11 +490,7 @@ const styles = {
     width: '16px',
     height: '16px',
     background: '#fff',
-    border: '1px solid #ddd',
-    '&:nth-child(1)': { top: '0', left: '0' },
-    '&:nth-child(2)': { top: '0', right: '0' },
-    '&:nth-child(3)': { bottom: '0', left: '0' },
-    '&:nth-child(4)': { bottom: '0', right: '0' }
+    border: '1px solid #ddd'
   },
 
   removeImageButton: {
@@ -553,9 +535,11 @@ const styles = {
   },
 
   heightLimitWarning: {
+    fontSize: '12px',
     fontWeight: 'bold',
     color: '#ff6b6b',
-    fontFamily: 'Kalam, cursive'
+    fontFamily: 'Kalam, cursive',
+    marginTop: '4px'
   }
 };
 
